@@ -15,5 +15,5 @@
 };
 
 /*
-My working solution. Basic iterative approach.
+My working solution. Basic iterative approach
 */
