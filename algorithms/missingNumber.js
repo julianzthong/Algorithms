@@ -26,14 +26,18 @@ Output: 1
 Explanation: n = 1 since there is 1 number, so all numbers are in the range [0,1]. 1 is the missing number in the range since it does not appear in nums.
 */
 
- var missingNumber = function(nums) {
+var missingNumber = function(nums) {
   let n = nums.length;
   nums.sort((a,b) => {
     return a - b;
   });
   for (let i = 0; i < n; i++) {
-    if (nums[i] === n) {
-      return nums[i];
+    if (nums[i] !== i) {
+      return i;
     }
   }
+  return  n;
 };
+
+console.log(missingNumber([3,0,1])) // 2
+console.log(missingNumber([0,1])) // 2
