@@ -33,14 +33,14 @@ Constraints:
  * @return {number}
  */
 var fib = function(n, memo = {}) {
+  if (n == 0) {
+    return 0
+  }
   if (n in memo) {
     return memo[n];
   }
   if (n <= 2) {
     return 1;
-  }
-  if (n = 0) {
-    return 0;
   }
   memo[n] = fib(n - 1, memo) + fib(n - 2, memo);
   return memo[n];
