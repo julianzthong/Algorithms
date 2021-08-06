@@ -41,5 +41,21 @@ All elements of candidates are distinct.
  * @return {number[][]}
  */
  var combinationSum = function(candidates, target) {
+  if (target === 0) {
+    return [];
+  }
+  if (target < 0) {
+    return null;
+  }
 
+  for (let num of candidates) {
+    const remainder = target - num;
+    const remainderResult = combinationSum(candidates, remainder);
+    if (remainderResult !== null) {
+      let nextArray = [ ...remainderResult, num];
+      return nextArray;
+    }
+  }
+  return null;
 };
+console.log(combinationSum([2,3,5], 8))
