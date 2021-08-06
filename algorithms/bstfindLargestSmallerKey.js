@@ -45,8 +45,6 @@ BinarySearchTree.prototype.findLargestSmallerKey = function(num) {
   }
 }
 
-//inr
-
 // Creates a new node by a key and inserts it to the BST
 BinarySearchTree.prototype.insert = function(key) {
   var root = this.root;
