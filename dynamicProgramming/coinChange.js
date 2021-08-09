@@ -34,28 +34,41 @@ Constraints:
 0 <= amount <= 104
 */
 
-
 /**
  * @param {number[]} coins
  * @param {number} amount
  * @return {number}
  */
-var coinChange = function(coins, amount) {
-  let result = 0;
-  coins.sort((a,b) => {
-    return b - a;
-  })
-  let n = coins.length;
-  for (let i = 0; i < n; i++) {
-    while (amount >= coins[i]) {
-      amount -= coins[i];
-      result ++;
+var coinChange = function (coins, amount, memo = {}) {
+  const findCombo = (coins, amount, memo = {}) => {
+    if (amount in memo) return memo[amount];
+    if (amount === 0) {
+      return [];
     }
-  }
-  if (amount != 0) {
-    return -1;
-  }
-  return result
+    if (amount < 0) {
+      return -1;
+    }
+    let shortestCombination = -1;
+
+    for (let coin of coins) {
+      const remainder = amount - coin;
+      const remainderCombination = findCombo(coins, remainder, memo);
+      if (remainderCombination !== -1) {
+        const combination = [...remainderCombination, coin];
+        if (
+          combination.length < shortestCombination.length ||
+          shortestCombination === -1
+        ) {
+          shortestCombination = combination;
+        }
+      }
+    }
+    memo[amount] = shortestCombination;
+    return memo[amount];
+  };
+  const combo = findCombo(coins, amount, memo);
+  return combo.length;
 };
 
-console.log(coinChange([1,2,5], 10));
+console.log(coinChange([1, 2, 5], 11));
+console.log(coinChange([1, 2, 5, 25], 100));
