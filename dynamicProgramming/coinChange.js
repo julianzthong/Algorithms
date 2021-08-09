@@ -70,5 +70,29 @@ var coinChange = function (coins, amount, memo = {}) {
   return combo.length;
 };
 
-console.log(coinChange([1, 2, 5], 11));
-console.log(coinChange([1, 2, 5, 25], 100));
+// console.log(coinChange([1, 2, 5], 11));
+// console.log(coinChange([1, 2, 5, 25], 100));
+
+const coinChangeTab = (coins, amount) => {
+  const table = Array(amount + 1).fill(-1);
+  table[0] = [];
+
+  for (let i = 0; i <= amount; i++) {
+    if (table[i] != -1) {
+      for (let coin of coins) {
+        const combination = [ ...table[i], coin ];
+        if (i + coin <= amount) {
+          if (table[i + coin] === -1 || combination.length < table[i + coin].length) {
+            table[i + coin] = combination;
+          }
+        }
+      }
+    }
+  }
+  if(table[amount] !== -1) {
+    return table[amount].length;
+  }
+  return table[amount];
+}
+
+console.log(coinChangeTab([1, 2, 5, 25], 100));
