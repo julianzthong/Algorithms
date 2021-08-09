@@ -34,7 +34,7 @@ It's guaranteed that the answer will be less than or equal to 2 * 109.
  * @param {number} n
  * @return {number}
  */
-var uniquePaths = function(m, n, memo = {}) {
+var uniquePathsMemo = function(m, n, memo = {}) {
   const key = m + ',' + n;
   const reverseKey = n + ',' + m;
   if (key in memo || reverseKey in memo) {
@@ -46,13 +46,29 @@ var uniquePaths = function(m, n, memo = {}) {
   if (n === 0 || m === 0) {
     return 0;
   }
-  memo[key] = uniquePaths(m-1, n, memo) + uniquePaths(m, n-1, memo);
+  memo[key] = uniquePathsMemo(m-1, n, memo) + uniquePathsMemo(m, n-1, memo);
   memo[reverseKey] = memo[key];
   return memo[key]
 };
 
-console.log(uniquePaths(3,2)) // 3
-console.log(uniquePaths(5,5)) // 70
-console.log(uniquePaths(4,4)) // 20
-console.log(uniquePaths(10,10)) // 48620
-console.log(uniquePaths(18,18)) // 2333606220
+var uniquePathsTab = function(m, n) {
+  const table = Array(m + 1)
+  .fill()
+  .map(() => Array(n + 1).fill(0));
+  table[1][1] = 1;
+
+  for (let i = 0; i <= n; i++) {
+    for (let j = 0; j <= m; j++) {
+      let current = table[i][j];
+      if (i + 1 <= n) table[i+1][j] += current;
+      if (j + 1 <= m) table[i][j+1] += current;
+    }
+  }
+  return table[m][n];
+}
+
+console.log(uniquePathsTab(3,2)) // 3
+console.log(uniquePathsTab(5,5)) // 70
+console.log(uniquePathsTab(4,4)) // 20
+console.log(uniquePathsTab(10,10)) // 48620
+console.log(uniquePathsTab(18,18)) // 2333606220
