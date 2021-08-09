@@ -32,7 +32,8 @@ Constraints:
  * @param {number} n
  * @return {number}
  */
-var fib = function(n, memo = {}) {
+
+var memoFib = function(n, memo = {}) {
   if (n == 0) {
     return 0
   }
@@ -42,8 +43,18 @@ var fib = function(n, memo = {}) {
   if (n <= 2) {
     return 1;
   }
-  memo[n] = fib(n - 1, memo) + fib(n - 2, memo);
+  memo[n] = memoFib(n - 1, memo) + memoFib(n - 2, memo);
   return memo[n];
 };
 
-console.log(fib(6))
+var tabFib = (n) => {
+  const table = new Array(n + 1).fill(0);
+  table[1] = 1;
+  for (let i = 0; i < n; i++) {
+    table[i+1] += table[i]
+    table[i+2] += table[i];
+  }
+  return table[n];
+}
+
+console.log(tabFib(6))
