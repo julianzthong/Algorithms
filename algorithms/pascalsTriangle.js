@@ -18,5 +18,22 @@ Constraints:
  * @return {number[][]}
  */
  var generate = function(numRows) {
+  const table = Array(numRows)
+  .fill()
+  .map(() => Array())
+
+  for (let row = 0; row < numRows; row++) {
+    for (let num = 0; num <= row; num++) {
+      if (num === 0 || num === row) {
+        table[row][num] = 1;
+      }
+      if (num > 0 && num < row) {
+        table[row][num] = table[row - 1][num - 1] + table[row - 1][num];
+      }
+    }
+  }
+  console.log(table)
 
 };
+
+generate(5);
