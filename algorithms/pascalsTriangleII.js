@@ -24,6 +24,20 @@ Follow up: Could you optimize your algorithm to use only O(rowIndex) extra space
  * @param {number} rowIndex
  * @return {number[]}
  */
- var getRow = function(rowIndex) {
-
+var getRow = function(rowIndex) {
+  let numberOfRows = rowIndex + 1
+  const table = Array(numberOfRows).fill().map(()=>Array(0));
+  for (let row = 0; row < numberOfRows; row++) {
+    for (let num = 0; num <= row; num++) {
+      if (num === 0 || num === row) {
+        table[row][num] = 1;
+      }
+      if (num > 0 && num < row) {
+        table[row][num] = table[row - 1][num - 1] + table[row - 1][num];
+      }
+    }
+  }
+  return table[rowIndex]
 };
+
+console.log(getRow(5))
