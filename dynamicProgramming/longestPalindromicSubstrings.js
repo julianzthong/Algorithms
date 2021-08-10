@@ -25,13 +25,13 @@ s consist of only digits and English letters.*/
  * @param {string} s
  * @return {string}
  */
- var longestPalindrome = function(s) {
+var longestPalindrome = function(s) {
    let n = s.length;
   const table = Array(n + 1)
   .fill()
   .map(()=>Array(n + 1).fill(false));
 
-  let lps = ''
+  let lps = '';
 
   // fill single letters
   for (let i = 0; i < n; i++) {
@@ -46,10 +46,16 @@ s consist of only digits and English letters.*/
       lps = s.substring(i, i+2);
     }
   }
-
-  for (let )
-  console.log(table)
-  console.log(lps);
+  // three+ letters
+  for (let start = s.length - 1; start >= 0; start--) {
+    for (let end = start + 2; end < s.length; end++) {
+      table[start][end] = table[start+1][end-1] && s[start] === s[end];
+      if (table[start][end]) {
+        lps = lps.length < (end - start + 1) ? s.substring(start, end + 1) : lps;
+      }
+    }
+  }
+  return lps;
 };
 
-longestPalindrome('babad');
+console.log(longestPalindrome('babad'));
