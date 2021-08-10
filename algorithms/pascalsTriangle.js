@@ -17,7 +17,7 @@ Constraints:
  * @param {number} numRows
  * @return {number[][]}
  */
- var generate = function(numRows) {
+var generate = function(numRows) {
   const table = Array(numRows)
   .fill()
   .map(() => Array())
@@ -32,8 +32,7 @@ Constraints:
       }
     }
   }
-  console.log(table)
-
+  return table;
 };
 
 generate(5);
