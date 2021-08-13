@@ -30,4 +30,12 @@ Constraints:
  */
 
 var threeSum = function (nums) {
-}
+  if (nums.length < 3) {
+    return [];
+  }
+  nums.sort((a,b )=> return a - b);
+  return nums;
+};
+
+
+console.log(threeSum([-1,0,1,2,-1,-4]))
