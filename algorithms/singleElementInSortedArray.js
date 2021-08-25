@@ -42,7 +42,6 @@ var singleNonDuplicate = function(nums) {
 
   while (left <= right) {
     midpoint = (left + (right - left) / 2);
-    //check pairs from midpoint;
     if (nums[midpoint] === nums[midpoint + 1] && midpoint % 2 === 0) {
       left = midpoint+2;
     } else if (nums[midpoint] === nums[midpoint - 1] && (midpoint-1)%2 === 0) {
