@@ -19,6 +19,15 @@ Constraints:
  * @param {number[]} nums
  * @return {number}
  */
- var singleNonDuplicate = function(nums) {
-
+var singleNonDuplicate = function(nums) {
+  let n = nums.length;
+  for (let i = 0; i < n; i+=2) {
+    if (nums[i] === nums[i+1]) {
+      continue;
+    } else {
+      return nums[i];
+    }
+  }
 };
+
+console.log(singleNonDuplicate([3,3,7,7,10,11,11]))
