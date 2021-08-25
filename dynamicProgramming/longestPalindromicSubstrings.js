@@ -59,3 +59,29 @@ s consist of only digits and English letters.*/
 // };
 
 var longestPalindrome = function(s) {
+  let n = s.length;
+  if (n < 1 || s === null) return '';
+  let longest = '';
+
+  for (let i = 0; i < n; i++) {
+    let odd = startFromCenter(s, i, i);
+    let even = startFromCenter(s, i-1, i);
+    if (odd.length > longest.length) {
+      longest = odd;
+    }
+    if (even.length > longest.length) {
+      longest = even;
+    }
+  }
+
+  function startFromCenter (str, left, right) {
+    let i = 0;
+    while (str[left - i] && str[left - i] === str[right + i]) {
+      i++;
+    }
+    i--;
+    return str.slice(left - i, right + i + 1);
+  }
+
+  return longest;
+}
