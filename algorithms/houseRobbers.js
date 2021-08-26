@@ -23,6 +23,18 @@ Constraints:
  * @param {number[]} nums
  * @return {number}
  */
- var rob = function(nums) {
+var rob = function(nums) {
+  let n = nums.length;
+  let table = new Array(n).fill(0);
+  if (n === 1) return nums[0];
 
+  table[0] = nums[0];
+  table[1] = nums[1];
+
+  for (let i = 2; i < n; i++) {
+    table[i] = nums[i] + Math.max(table[i-2], (table[i-3]|| 0))
+  }
+  return Math.max(table[n-1], table[n-2]);
 };
+
+console.log(rob([2,7,9,3,1]))
