@@ -28,6 +28,16 @@ The number of nodes in the list is in the range [0, 100].
  * @param {ListNode} head
  * @return {ListNode}
  */
- var swapPairs = function(head) {
+var swapPairs = function(head) {
+  let dummyhead = new ListNode(0);
+  let dummyhead.next = head;
 
+  let first = dummyhead.next.next;
+  let second = dummyead.next;
+
+
+
+
+
+  return dummyhead.next;
 };
