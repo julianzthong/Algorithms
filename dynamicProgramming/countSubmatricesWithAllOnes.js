@@ -34,7 +34,9 @@ Input: mat = [[1,1,1,1,1,1]]
 Output: 21
 
 Example 4:
-Input: mat = [[1,0,1],[0,1,0],[1,0,1]]
+Input: mat = [[1,0,1]
+             ,[0,1,0]
+             ,[1,0,1]]
 Output: 5
 
 
@@ -48,5 +50,22 @@ Constraints:
  * @return {number}
  */
 var numSubmat = function(mat) {
-
+  //first count how many 1's there are in the matrix. those will be all the 1x1's
+  var totalRows = mat.length;
+  var totalCol = mat[0].length;
+  var count = 0;
+  for (let row = 0; row < totalRows; row++) {
+    for (let col = 0; col < totalCol; col++) {
+      if (mat[row][col] === 1) {
+        count++;
+        //check the cell below this one also.
+      }
+    }
+  }
+  return count;
 };
+
+var mat = [ [1,0,1],
+            [1,1,0],
+            [1,1,0]]
+console.log(numSubmat(mat)); // output: 13
