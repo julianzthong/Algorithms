@@ -44,6 +44,6 @@ board[i][j] is a digit 1-9 or '.'.
  * @param {character[][]} board
  * @return {boolean}
  */
- var isValidSudoku = function(board) {
+var isValidSudoku = function(board) {
 
 };
