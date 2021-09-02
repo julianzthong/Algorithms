@@ -47,3 +47,6 @@ board[i][j] is a digit 1-9 or '.'.
 var isValidSudoku = function(board) {
 
 };
+function numberChecker (array) {
+
+}
