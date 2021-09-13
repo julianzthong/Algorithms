@@ -27,15 +27,15 @@ Constraints:
  * @param {number} n
  * @return {number}
  */
-var climbStairs = function(n, memo = {}) {
+var climbStairs = function (n, memo = {}) {
   if (memo[n]) {
-    return memo[n]
+    return memo[n];
   }
   if (n === 0 || n === 1) {
     return 1;
   }
   memo[n] = climbStairs(n - 1, memo) + climbStairs(n - 2, memo);
-  return memo[n]
+  return memo[n];
 };
 
 console.log(climbStairs(45)); //1836311903

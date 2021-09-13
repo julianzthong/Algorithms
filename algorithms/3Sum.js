@@ -29,11 +29,10 @@ var threeSum = function (nums) {
   if (nums.length < 3) {
     return [];
   }
-  nums.sort((a,b)=> a - b);
+  nums.sort((a, b) => a - b);
   const distinctNums = [...new Set(nums)];
 
   return distinctNums;
 };
 
-
-console.log(threeSum([-1,0,1,2,-1,-4]))
+console.log(threeSum([-1, 0, 1, 2, -1, -4]));

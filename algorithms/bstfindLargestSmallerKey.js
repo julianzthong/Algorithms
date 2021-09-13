@@ -9,7 +9,6 @@
  *    helper code is used to test findLargestSmallerKey. *
  *********************************************************/
 
-
 // Constructor to create a new Node
 function Node(key) {
   this.key = key;
@@ -23,10 +22,9 @@ function BinarySearchTree() {
   this.root = null;
 }
 
-
-BinarySearchTree.prototype.findLargestSmallerKey = function(num) {
+BinarySearchTree.prototype.findLargestSmallerKey = function (num) {
   function traverse(node, num, result) {
-    if(!node){
+    if (!node) {
       if (result >= num) {
         return -1;
       }
@@ -39,20 +37,20 @@ BinarySearchTree.prototype.findLargestSmallerKey = function(num) {
     }
   }
   if (this.root.key >= num) {
-      return traverse(this.root.left, num, this.root.key);
+    return traverse(this.root.left, num, this.root.key);
   } else {
-      return traverse(this.root.right, num, this.root.key);
+    return traverse(this.root.right, num, this.root.key);
   }
-}
+};
 
 // Creates a new node by a key and inserts it to the BST
-BinarySearchTree.prototype.insert = function(key) {
+BinarySearchTree.prototype.insert = function (key) {
   var root = this.root;
 
   // 1. If the tree is empty, create the root
-  if(!root) {
-      this.root = new Node(key);
-      return;
+  if (!root) {
+    this.root = new Node(key);
+    return;
   }
 
   // 2) Otherwise, create a node with the key
@@ -61,26 +59,26 @@ BinarySearchTree.prototype.insert = function(key) {
   var currentNode = root;
   var newNode = new Node(key);
 
-  while(currentNode !== null) {
-      if(key < currentNode.key) {
-          if(!currentNode.left) {
-              currentNode.left = newNode;
-              newNode.parent = currentNode;
-              break;
-          } else {
-              currentNode = currentNode.left;
-          }
+  while (currentNode !== null) {
+    if (key < currentNode.key) {
+      if (!currentNode.left) {
+        currentNode.left = newNode;
+        newNode.parent = currentNode;
+        break;
       } else {
-          if(!currentNode.right) {
-              currentNode.right = newNode;
-              newNode.parent = currentNode;
-              break;
-          } else {
-              currentNode = currentNode.right;
-          }
+        currentNode = currentNode.left;
       }
+    } else {
+      if (!currentNode.right) {
+        currentNode.right = newNode;
+        newNode.parent = currentNode;
+        break;
+      } else {
+        currentNode = currentNode.right;
+      }
+    }
   }
-}
+};
 
 /*********************************************
  * Driver program to test above function     *
