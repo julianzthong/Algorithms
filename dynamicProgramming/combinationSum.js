@@ -52,10 +52,11 @@ var combinationSum = function (candidates, target) {
     const remainder = target - num;
     const remainderResult = combinationSum(candidates, remainder);
     if (remainderResult !== null) {
-      let nextArray = [...remainderResult, num];
+      let nextArray = [ ...remainderResult, num];
       return nextArray;
     }
   }
   return null;
 };
-console.log(combinationSum([2, 3, 5], 8));
+// console.log(combinationSum([2, 3, 5], 8));
+console.log(combinationSum([2,3,6,7], 7));
