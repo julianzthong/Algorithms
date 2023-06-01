@@ -45,8 +45,56 @@ board[i][j] is a digit 1-9 or '.'.
  * @return {boolean}
  */
 var isValidSudoku = function(board) {
+  const columnChecker = (board, columnIndex) => {
+    let validColumn = true;
+    let columnArray = [];
+    let row = 0;
+    while(row < 9) {
+      if (columnArray.indexOf(board[row][columnIndex]) === -1 || board[row][columnIndex] === ".") {
+        columnArray.push(board[row][columnIndex])
+        row++
+      } else {
+        validColumn = false;
+        break;
+      }
+    }
+    return validColumn;
+  }
 
+  const rowChecker = (array) => {
+    let validRow = true;
+    let checkedNums = [];
+    let i = 0;
+    while (i < 9) {
+      if (checkedNums.indexOf(array[i]) === -1 || array[i] === ".") {
+        checkedNums.push(array[i])
+        i++
+      } else {
+        validRow = false;
+        break;
+      }
+    }
+    return validRow;
+  }
+
+  let rowValidity, columnValidity;
+  for(i = 0; i < 9; i ++) {
+    if (!columnChecker(board, i)) {
+      return false;
+    };
+    if (!rowChecker(board[i])) {
+      return false;
+    }
+
+    let boxMap = {};
+    for (j = 0; j < 9; j++) {
+      let box = board[3* Math.floor(i/3) +Math.floor(j/3)][3*(i%3)+(j%3)]
+      if (box!= '.') {
+        if (boxMap[box]) return false;
+        boxMap[box] = 1;
+      }
+
+    }
+  }
+  return true;
 };
-function numberChecker (array) {
-
-}
