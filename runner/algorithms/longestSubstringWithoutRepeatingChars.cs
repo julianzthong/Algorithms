@@ -2,32 +2,23 @@ public class Solution
 {
   public int LengthOfLongestSubstring(string s)
   {
-    int result = 0;
-    int subStringLength = 1;
-    List<string> splitString = s.Split("");
-    int end = splitString.Count - 1;
+    HashSet<char> seen = new();
+    int left = 0;
+    int maxLength = 0;
 
-    for (var i = 0; i < end; i++)
+    for (var right = 0; right < s.Length; right++)
     {
-      if (splitString[i] != splitString[i + 1])
+      while (seen.Contains(s[right]))
       {
-        subStringLength++;
+        seen.Remove(s[left]);
+        left++;
       }
-      else
-      {
-        if (subStringLength > result)
-        {
-          result = subStringLength;
-        }
-        subStringLength = 1;
-      }
-    }
 
-    return result;
+      seen.Add(s[right]);
+      maxLength = Math.Max(maxLength, right - left + 1);
+    }
   }
 }
-
-
 
 /*
 3. Longest Substring Without Repeating Characters
