@@ -8,24 +8,23 @@ public partial class Solution
     {
       return 1 * Math.Min(height[0], height[1]);
     }
-    var next = height.Length - 1;
-    int length = height.Length;
-    int result = 0;
-    for (var first = 0; first < next; first++)
-    {
-      while (first < next)
-      {
-        length--;
 
-        result = Math.Max(result, length * Math.Min(height[first], height[next]));
-        if (height[first] < height[next])
-        {
-          first++;
-        }
-        else
-        {
-          next--;
-        }
+    int result = 0;
+    int first = 0;
+    int next = height.Length - 1;
+
+    while (first < next)
+    {
+      int length = next - first;
+
+      result = Math.Max(result, length * Math.Min(height[first], height[next]));
+      if (height[first] < height[next])
+      {
+        first++;
+      }
+      else
+      {
+        next--;
       }
     }
 
