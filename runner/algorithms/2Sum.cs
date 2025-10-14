@@ -19,7 +19,7 @@ public partial class Solution
         next++;
       }
 
-      next = first + 1;
+      next = first + 2;
     }
 
     return [];
