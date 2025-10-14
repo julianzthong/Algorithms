@@ -1,4 +1,6 @@
-public class Solution
+namespace Runner.Algorithms;
+
+public partial class Solution
 {
   public int LengthOfLongestSubstring(string s)
   {
@@ -17,6 +19,8 @@ public class Solution
       seen.Add(s[right]);
       maxLength = Math.Max(maxLength, right - left + 1);
     }
+
+    return maxLength;
   }
 }
 

@@ -4,24 +4,24 @@
  */
 
 // Basic Iterative Strategy
-// var isPalindrome = function(x) {
-//   var stringNum = x.toString();
-//   var length = stringNum.length;
-//   if (length == 1) return true;
+var isPalindrome = function(x) {
+  var stringNum = x.toString();
+  var length = stringNum.length;
+  if (length == 1) return true;
 
-//   var half;
-//   if (length % 2 == 0)
-//   {
-//     half = length / 2;
-//   } else {
-//     half = (length - 1) / 2;
-//   }
+  var half;
+  if (length % 2 == 0)
+  {
+    half = length / 2;
+  } else {
+    half = (length - 1) / 2;
+  }
 
-//   for (var i = 0; i < half; i++) {
-//     if (stringNum[i] != stringNum[length-1-i]) return false;
-//   }
-//   return true
-// };
+  for (var i = 0; i < half; i++) {
+    if (stringNum[i] != stringNum[length-1-i]) return false;
+  }
+  return true
+};
 
 // Recursive Strategy
 var isPalindrome = function(x) {

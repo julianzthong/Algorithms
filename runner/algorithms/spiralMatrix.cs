@@ -1,4 +1,6 @@
-public class Solution
+namespace Runner.Algorithms;
+
+public partial class Solution
 {
   public IList<int> SpiralOrder(int[][] matrix)
   {
