@@ -29,7 +29,6 @@ public partial class Solution
 
     for (var i = 1; i < prices.Length; i++)
     {
-
       maxProfit = Math.Max(maxProfit, prices[i] - minPrice);
       minPrice = Math.Min(minPrice, prices[i]);
     }
