@@ -1,3 +1,28 @@
+namespace DynamicProgramming;
+
+public partial class Solution
+{
+  public int Fib(int n, Dictionary<int, int>? memo = null)
+  {
+    memo ??= [];
+    if (n == 0)
+    {
+      return 0;
+    }
+    if (memo.TryGetValue(n, out int value))
+    {
+      return value;
+    }
+    if (n <= 2)
+    {
+      return 1;
+    }
+
+    memo[n] = Fib(n - 1, memo) + Fib(n - 2, memo);
+    return memo[n];
+  }
+}
+
 /*
 The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
 
@@ -26,33 +51,4 @@ Constraints:
 
 0 <= n <= 30
 */
-/**
- * @param {number} n
- * @return {number}
- */
 
-var memoFib = function(n, memo = {}) {
-  if (n == 0) {
-    return 0
-  }
-  if (n in memo) {
-    return memo[n];
-  }
-  if (n <= 2) {
-    return 1;
-  }
-  memo[n] = memoFib(n - 1, memo) + memoFib(n - 2, memo);
-  return memo[n];
-};
-
-var tabFib = (n) => {
-  const table = new Array(n + 1).fill(0);
-  table[1] = 1;
-  for (let i = 0; i < n; i++) {
-    table[i+1] += table[i]
-    table[i+2] += table[i];
-  }
-  return table[n];
-}
-
-console.log(tabFib(6))
