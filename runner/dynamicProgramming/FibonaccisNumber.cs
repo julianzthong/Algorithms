@@ -21,6 +21,30 @@ public partial class Solution
     memo[n] = Fib(n - 1, memo) + Fib(n - 2, memo);
     return memo[n];
   }
+
+  public int IterativeFib(int n)
+  {
+    if (n == 0)
+    {
+      return 0;
+    }
+    if (n <= 2)
+    {
+      return 1;
+    }
+    int first = 1;
+    int second = 1;
+    int current = 0;
+
+    for (var i = 2; i < n; i++)
+    {
+      current = first + second;
+      second = first;
+      first = current;
+    }
+
+    return current;
+  }
 }
 
 /*
