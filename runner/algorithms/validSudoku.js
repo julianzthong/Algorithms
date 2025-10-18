@@ -93,7 +93,6 @@ var isValidSudoku = function(board) {
         if (boxMap[box]) return false;
         boxMap[box] = 1;
       }
-
     }
   }
   return true;
