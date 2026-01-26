@@ -12,7 +12,7 @@ public class LRUCache {
   public int Get(int key) {
     if (lookup.TryGetValue(key, out int value))
     {
-      // Move key to back of the list
+      // Move key to back of the list first
       return value;
     }
 
@@ -25,7 +25,7 @@ public class LRUCache {
     {
       LinkedListNode<int> newNode = new(key);
     }
-    linkedList.AddBefore(key);
+
     if (lookup.Count > capacity)
     {
       // Remove the last item;
