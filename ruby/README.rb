@@ -1,6 +1,6 @@
 # LeetCode Practice (Ruby)
 
-This repository contains my LeetCode practice solutions written in Ruby.
+This repository contains LeetCode practice solutions written in Ruby.
 
 The goal of this repo is to:
 - Practice core data structures and algorithms

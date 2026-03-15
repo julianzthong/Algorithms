@@ -9,7 +9,7 @@ public partial class Solution
 
     for (var first = 0; first < next; first++)
     {
-      while (next < length)
+      while(next < length)
       {
         if (nums[first] + nums[next] == target)
         {
@@ -20,7 +20,6 @@ public partial class Solution
 
       next = first + 2;
     }
-
     return [];
   }
 }
