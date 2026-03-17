@@ -4,50 +4,24 @@ public partial class Solution
 {
   public bool IsValid(string s) {
     Stack<char> stack = new();
-    foreach (char c in s)
+    Dictionary<char, char> characterMap  = new(){
+      { ')', '(' },
+      { ']', '['},
+      {'}', '{'}
+    };
+    foreach (var c in s)
     {
-      if (c == '(' || c == '{' || c == '[')
+      if (characterMap.ContainsValue(c))
       {
         stack.Push(c);
       }
-      else if (c == ')')
+      else
       {
-        if (stack.Count == 0 || stack.Peek() != '(')
-        {
-          return false;
-        }
-
-        stack.Pop();
-        continue;
-      }
-      else if (c == '}')
-      {
-        if (stack.Count == 0 || stack.Peek() != '{')
-        {
-          return false;
-        }
-
-        stack.Pop();
-        continue;
-      }
-      else if (c == ']')
-      {
-        if (stack.Count == 0 || stack.Peek() != '[')
-        {
-          return false;
-        }
-
-        stack.Pop();
-        continue;
+        if (!stack.TryPop(out var opener) || opener != characterMap[opener]) return false;
       }
     }
 
-    if (stack.Count != 0)
-    {
-      return false;
-    }
-
-    return true;
+    return stack.Count == 0;
   }
 }
 
