@@ -4,11 +4,11 @@ public partial class Solution
 {
   public int LengthOfLongestSubstring(string s)
   {
-    HashSet<char> seen = new();
+    HashSet<char> seen = [];
     int left = 0;
     int maxLength = 0;
 
-    for (var right = 0; right < s.Length; right++)
+    for (var right = 1; right < s.Length; right++)
     {
       while (seen.Contains(s[right]))
       {
@@ -26,16 +26,8 @@ public partial class Solution
 
 /*
 3. Longest Substring Without Repeating Characters
-Medium
-Topics
-premium lock iconCompanies
-Hint
-
 Given a string s, find the length of the longest
-
 without duplicate characters.
-
-
 
 Example 1:
 

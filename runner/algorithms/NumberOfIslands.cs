@@ -49,9 +49,12 @@ public partial class Solution {
 
     Queue<(int, int)> queue = new();
 
-    queue.Append((row,col));
+    _ = queue.Append((row, col));
 
+    if (queue.Count > 0)
+    {
 
+    }
 
   }
 
