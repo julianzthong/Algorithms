@@ -42,25 +42,31 @@ public partial class Solution {
 
   public static void BFS(char[][] grid, int row, int col)
   {
+    Queue<(int, int)> queue = new();
+
+    _ = queue.Append((row, col));
+    grid[row][col] = '0';
+
+    if (queue.Count > 0)
+    {
+      (int r, int c) = queue.Dequeue();
+
+      Explore(queue, grid, r - 1, c);
+      Explore(queue, grid, r + 1, c);
+      Explore(queue, grid, r, c - 1);
+      Explore(queue, grid, r, c + 1);
+    }
+  }
+
+  public static void Explore(Queue<(int, int)> queue, char[][] grid, int row, int col)
+  {
     if (!ValidCoords(grid, row, col) || grid[row][col] == '0')
     {
       return;
     }
 
-    Queue<(int, int)> queue = new();
-
-    _ = queue.Append((row, col));
-
-    if (queue.Count > 0)
-    {
-
-    }
-
-  }
-
-  public static void Explore(Queue<(int, int)> queue, char[][] grid, int row, int col)
-  {
-
+    grid[row][col] = '0';
+    queue.Enqueue((row, col));
   }
 
   public static bool ValidCoords(char[][] grid, int row, int col)
