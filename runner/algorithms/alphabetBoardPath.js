@@ -32,7 +32,7 @@ var alphabetBoardPath = function (target) {
     let x = diff[1];
     if (coord2[0] === 5) {
       if (y === 0 && x === 0) {
-        // LOTS OF EDGE CASES SMH
+
         path += "!";
         return;
       }

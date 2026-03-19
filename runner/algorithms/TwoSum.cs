@@ -22,6 +22,26 @@ public partial class Solution
     }
     return [];
   }
+
+  public int[] DictTwoSum(int[] nums, int target)
+  {
+    Dictionary<int, int> seen = [];
+
+    int length = nums.Length;
+
+    for (var i = 0; i < length; i++)
+    {
+      if (seen.TryGetValue(nums[i], out int value))
+      {
+        return[value, i];
+      }
+
+      int complement = target - nums[i];
+      seen[complement] = i;
+    }
+
+    return [];
+  }
 }
 
 /*
