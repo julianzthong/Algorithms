@@ -1,4 +1,6 @@
-public class Solution {
+namespace Runner.Algorithms;
+
+public partial class Solution {
   public string CountAndSay(int n) {
     string result = "1";
     for (int i = 2; i <= n; i++)
